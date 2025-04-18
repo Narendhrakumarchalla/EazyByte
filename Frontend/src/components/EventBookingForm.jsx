@@ -24,96 +24,104 @@ const EventBookingForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Booking Data:", formData);
-    alert(`Booked ${formData.eventType} event successfully!`);
+    alert(`🎉 Booked ${formData.eventType} event successfully!`);
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-md mt-6">
-      <h2 className="text-2xl font-semibold mb-4 text-center">
-        Book {formData.eventType}
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Date & Time */}
-        <div className="flex gap-4">
-          <div className="flex-1">
-            <label className="block font-medium">Date</label>
+    <div className="min-h-screen bg-orange-50 py-10 px-4 flex items-center justify-center">
+      <div className="w-full max-w-3xl bg-white shadow-2xl rounded-2xl p-8 md:p-12">
+        <h2 className="text-3xl font-bold text-center text-blue-900 mb-6">
+          Book Your <span className="capitalize">{formData.eventType}</span> Event
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Date & Time */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Event Date</label>
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Event Time</label>
+              <input
+                type="time"
+                name="time"
+                value={formData.time}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
+              />
+            </div>
+          </div>
+
+          {/* Number of Guests */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-1">Number of Guests</label>
             <input
-              type="date"
-              name="date"
-              value={formData.date}
+              type="number"
+              name="guests"
+              min="1"
+              value={formData.guests}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded"
+              className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter number of expected guests"
             />
           </div>
-          <div className="flex-1">
-            <label className="block font-medium">Time</label>
-            <input
-              type="time"
-              name="time"
-              value={formData.time}
+
+          {/* Cake & Decoration */}
+          <div className="flex flex-wrap gap-6">
+            <label className="inline-flex items-center text-gray-700 font-medium">
+              <input
+                type="checkbox"
+                name="cakeRequired"
+                checked={formData.cakeRequired}
+                onChange={handleChange}
+                className="form-checkbox mr-2 accent-blue-600"
+              />
+              Cake Required
+            </label>
+            <label className="inline-flex items-center text-gray-700 font-medium">
+              <input
+                type="checkbox"
+                name="decorationRequired"
+                checked={formData.decorationRequired}
+                onChange={handleChange}
+                className="form-checkbox mr-2 accent-blue-600"
+              />
+              Decoration Required
+            </label>
+          </div>
+
+          {/* Additional Notes */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-1">Additional Notes</label>
+            <textarea
+              name="notes"
+              value={formData.notes}
               onChange={handleChange}
-              required
-              className="w-full border p-2 rounded"
+              rows={4}
+              className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-300"
+              placeholder="Mention any specific requests or preferences"
             />
           </div>
-        </div>
 
-        {/* Guests */}
-        <div>
-          <label className="block font-medium">Number of Guests</label>
-          <input
-            type="number"
-            name="guests"
-            min="1"
-            value={formData.guests}
-            onChange={handleChange}
-            required
-            className="w-full border p-2 rounded"
-          />
-        </div>
-
-        {/* Options */}
-        <div className="flex items-center space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              name="cakeRequired"
-              checked={formData.cakeRequired}
-              onChange={handleChange}
-            />
-            <span>Cake Required</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              name="decorationRequired"
-              checked={formData.decorationRequired}
-              onChange={handleChange}
-            />
-            <span>Decoration Required</span>
-          </label>
-        </div>
-
-        {/* Notes */}
-        <div>
-          <label className="block font-medium">Additional Notes</label>
-          <textarea
-            name="notes"
-            value={formData.notes}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            placeholder="Any specific requests?"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-primary hover:bg-primary-dark text-white p-2 rounded"
-        >
-          Book Now
-        </button>
-      </form>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-800 hover:bg-blue-900 transition-colors text-white text-lg font-semibold py-3 rounded-md shadow-lg"
+          >
+            Confirm Booking
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

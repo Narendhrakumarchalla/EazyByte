@@ -11,7 +11,7 @@ const FoodItemCard = ({ name, price, image, onAdd }) => (
     <div className="text-primary font-bold">₹{price}</div>
     <button
       onClick={onAdd}
-      className="bg-primary hover:bg-primary-dark transition-colors duration-200 text-white px-4 py-1.5 mt-3 rounded-md w-full"
+      className="bg-blue-500 hover:bg-blue-700 transition-colors duration-200 text-white px-4 py-1.5 mt-3 rounded-md w-full"
     >
       Add to Cart
     </button>

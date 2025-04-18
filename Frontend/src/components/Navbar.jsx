@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
+import { IoFastFood } from "react-icons/io5";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-primary flex items-center">
-          <img src="/logo192.png" alt="Eazy-Bite" className="w-8 h-8 mr-2" />
+           <IoFastFood className="w-8 h-8 mr-2"/> 
           Eazy<span className="text-orange-500">Bite</span>
         </Link>
 
